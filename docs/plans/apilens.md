@@ -66,4 +66,4 @@ ApiLens/
 
 ## Publishing
 
-Pipeline-only. Do not `dotnet nuget push` from a local clone. The NuGet key is chosen when the first publish workflow is added. 0.1.0 CI builds and tests only.
+Pipeline-only. Do not `dotnet nuget push` from a local clone. CI follows the MauiEssentials package order: version alignment, `NUGET_KEY_APILENS`, tests, `net10.0` pack (nupkg and snupkg), then nuget.org and GitHub Packages.
