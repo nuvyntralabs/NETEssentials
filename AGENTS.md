@@ -32,6 +32,7 @@ Do not use this catalog for MAUI, Android, or iOS. Those belong to MauiEssential
 - The ApiLens dashboard is Development-only.
 - v1 hosts are MVC and minimal APIs.
 - Never `dotnet nuget push` from a local clone.
+- Hub CI (`.github/workflows/ci.yml`) is manual only. It dispatches each product repo’s `ci.yml` and waits. Do not add `push` or `pull_request` triggers on the hub workflow, and do not build or publish packages from the hub.
 
 ## Layout
 

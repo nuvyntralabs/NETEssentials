@@ -39,3 +39,11 @@ If you already cloned without submodules:
 ```bash
 git submodule update --init --recursive
 ```
+
+## Continuous integration
+
+The hub workflow at `.github/workflows/ci.yml` is **manual only** (`workflow_dispatch`). It does not run on push to the hub. A manual run dispatches each product submodule’s `CI` workflow and waits for the results. The hub does not build or publish packages.
+
+Store a GitHub token that can dispatch workflows on `nuvyntralabs/NuvyntraLabs.NET.*` as the `HUB_DISPATCH_TOKEN` Actions secret on this hub. The optional **product** input limits the dispatch to one submodule folder (for example `ApiLens`).
+
+Each product repository owns version alignment, `NUGET_KEY_NET`, tests, pack, and publish.

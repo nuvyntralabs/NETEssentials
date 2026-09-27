@@ -1,0 +1,44 @@
+# Hub CI is manual only. Do not add push or pull_request triggers.
+# A manual run dispatches each product repo's CI, which owns
+# NUGET_KEY_NET / version checks, tests, pack, and nuget.org publish.
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: Product folder to trigger (empty = all submodules)
+        required: false
+        type: string
+        default: ""
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    name: Trigger submodule pipelines
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout hub
+        uses: actions/checkout@v4
+
+      - name: Dispatch product CI workflows
+        env:
+          HUB_DISPATCH_TOKEN: ${{ secrets.HUB_DISPATCH_TOKEN }}
+          ONLY: ${{ inputs.product }}
+        run: |
+          set -euo pipefail
+          only_args=()
+          if [ -n "$ONLY" ]; then
+            only_args=(--only "$ONLY")
+          fi
+          python3 .github/scripts/dispatch-submodule-workflows.py \
+            --ref main \
+            --wait \
+            "${only_args[@]}"
