@@ -66,4 +66,4 @@ ApiLens/
 
 ## Publishing
 
-Pipeline-only. Do not `dotnet nuget push` from a local clone. CI follows the MauiEssentials package order: version alignment, `NUGET_KEY_APILENS`, tests, `net10.0` pack (nupkg and snupkg), then nuget.org and GitHub Packages.
+Pipeline-only. Do not `dotnet nuget push` from a local clone. CI follows the MauiEssentials package order: version alignment, `NUGET_KEY_NET`, tests, `net10.0` pack (nupkg and snupkg), then nuget.org and GitHub Packages.
