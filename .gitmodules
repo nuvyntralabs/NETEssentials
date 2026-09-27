@@ -1,0 +1,3 @@
+[submodule "ApiLens"]
+	path = ApiLens
+	url = https://github.com/nuvyntralabs/NuvyntraLabs.NET.ApiLens.git

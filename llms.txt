@@ -1,0 +1,10 @@
+# NETEssentials
+
+Server-side catalog. Sibling of MauiEssentials. Not a MAUI catalog.
+
+| Requirement | Product | Packages |
+| --- | --- | --- |
+| Why an ASP.NET Core request was slow or failed | ApiLens | NuvyntraLabs.NET.ApiLens, .AspNetCore, .EntityFrameworkCore, .Http, .UI |
+
+Docs: docs/plans/apilens.md
+Source: ApiLens/ submodule → https://github.com/nuvyntralabs/NuvyntraLabs.NET.ApiLens
